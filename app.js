@@ -1,5 +1,4 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación.
-//Aquí deberás desarrollar la lógica para resolver el problema.
+// Arreglo para almacenar los nombres de los amigos
 let nombresAmigos = [];
 let amigo = document.getElementById("amigo");
 let listaAmigos = document.getElementById("listaAmigos");
@@ -35,6 +34,7 @@ function amigoEnPantalla() {
     });
 }
 
+// Función para realizar el sorteo y mostrar botones
 function sortearAmigo() {
     if (nombresAmigos.length < 2) {
         alert("Debe haber al menos 2 amigos para sortear.");
@@ -55,8 +55,16 @@ function sortearAmigo() {
 
         sorteos[amigo1] = amigo2;
 
-        let resultadoItem = document.createElement("li");
-        resultadoItem.textContent = `${amigo1} → ${amigo2}`;
-        resultado.appendChild(resultadoItem);
+        let boton = document.createElement("button");
+        boton.textContent = amigo1;
+        boton.classList.add("boton-revelar");
+        boton.onclick = function() {
+            if (boton.textContent === amigo1) {
+                boton.textContent = `${amigo1} → ${amigo2}`;
+            } else {
+                boton.textContent = amigo1;
+            }
+        };
+        resultado.appendChild(boton);
     }
 }
